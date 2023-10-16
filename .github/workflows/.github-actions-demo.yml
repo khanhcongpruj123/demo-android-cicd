@@ -2,7 +2,7 @@ name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 jobs:
-  Upload to App Distribution:
+  Upload_to_App_Distribution:
     runs-on: alvrme/alpine-android-base:latest-jdk17
     steps:
       - run: ./gradlew assembleDebug appDistributionUploadDebug
