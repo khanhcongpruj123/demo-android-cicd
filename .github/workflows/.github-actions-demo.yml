@@ -1,8 +1,23 @@
 name: Demo CICD
 run-name: Upload to app distribution
-on: [push]
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
 jobs:
-  Upload_to_App_Distribution:
-    runs-on: cimg/android:2023.10
+  build:
+    runs-on: ubuntu-latest
     steps:
-      - run: ./gradlew assembleDebug appDistributionUploadDebug
+      - uses: actions/checkout@v3
+      - name: set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+      - name: Build with Gradle
+        run: ./gradlew assembleDebug appDistributionUploadDebug
