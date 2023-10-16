@@ -1,8 +1,8 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+name: Demo CICD
+run-name: Upload to app distribution
 on: [push]
 jobs:
   Upload_to_App_Distribution:
-    runs-on: alvrme/alpine-android-base:latest-jdk17
+    runs-on: cimg/android:2023.10
     steps:
       - run: ./gradlew assembleDebug appDistributionUploadDebug

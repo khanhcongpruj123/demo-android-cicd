@@ -1,5 +1,5 @@
 # VM
-FROM alvrme/alpine-android-base:latest-jdk17
+FROM cimg/android:2023.10
 
 # Copy source into vm to build
 COPY ./ ./
